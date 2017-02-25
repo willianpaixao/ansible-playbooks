@@ -1,0 +1,3 @@
+- name: Ensure NTP is enabled and running.
+  service: name=ntp state=started enabled=yes
+  tags: ntp

@@ -1,0 +1,11 @@
+---
+- name: Top level playbook.
+  hosts: all
+  connection: local
+  remote_user: willian
+  become: yes
+#  hosts: moss
+#  remote_user: root
+  roles:
+    - common
+

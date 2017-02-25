@@ -1,0 +1,7 @@
+- name: Install NTP server daemon.
+  apt: name=ntp state=latest
+  tags: ntp
+
+- name: Copy ntp.conf to the remote host.
+  copy: src=roles/common/files/ntp.conf dest=/etc/ntp.conf owner=root group=root mode=644 backup=yes
+  tags: ntp

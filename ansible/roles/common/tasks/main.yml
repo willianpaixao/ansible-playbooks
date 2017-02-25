@@ -1,0 +1,6 @@
+- include: roles/common/tasks/ntp.yml
+  tags: ntp
+
+- include: roles/common/tasks/iptables.yml
+  tags: iptables
+

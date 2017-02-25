@@ -1,0 +1,3 @@
+- include: roles/common/handlers/ntp.yml
+  tags: ntp
+
