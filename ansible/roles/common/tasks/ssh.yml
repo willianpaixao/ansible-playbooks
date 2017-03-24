@@ -1,0 +1,5 @@
+- name: Disable remote root login
+  lineinfile:
+    dest: "{{ sshd_config }}"
+    regexp: "^#?PermitRootLogin"
+    line: "PermitRootLogin no"

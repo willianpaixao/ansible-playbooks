@@ -1,3 +1,6 @@
-- name: Enable NTP service.
-  service: name=ntp state=restarted enabled=yes
-  tags: ntp
+- name: Enable and restart ntp.
+  service:
+    name: ntp
+    state: restarted
+    enabled: yes
+  tags: time

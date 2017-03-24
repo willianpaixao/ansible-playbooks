@@ -1,8 +1,11 @@
 - name: Install NTP server daemon.
-  apt: name=ntp state=latest
-  tags: ntp
+  apt:
+    name: ntp
+    state: latest
+  notify: Enable and restart ntp.
+  tags: ntp,time
 
 - name: Copy ntp.conf to the remote host.
   copy: src=roles/common/files/ntp.conf dest=/etc/ntp.conf owner=root group=root mode=644 backup=yes
-  notify: restart ntp
-  tags: ntp
+  notify: Enable and restart ntp.
+  tags: ntp,time
