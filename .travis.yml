@@ -1,11 +1,11 @@
 ---
-sudo: required
+language: python
 
 before_install:
-  - pip install ansible
+  - pip install --upgrade ansible
 
 script:
-  - ansible-playbook -K tasks/main.yml
+  - ansible-playbook --ask-pass tasks/main.yml
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
