@@ -1,4 +1,5 @@
 # ansible-playbooks
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/willianpaixao/ansible-playbooks/master?grs=github&t=white)
 
 > Note: For now I only pushed my most used playbooks.
 
