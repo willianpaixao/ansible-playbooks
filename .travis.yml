@@ -8,7 +8,10 @@ env:
   - distro: ubuntu1604
 
 before_install:
-  - 'docker pull ansible/ansible:{distro}'
+  - pip install ansible
+
+script:
+  - ansible --version
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
