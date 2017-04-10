@@ -1,17 +1,11 @@
 ---
 sudo: required
 
-services:
-  - docker
-
-env:
-  - distro: ubuntu1604
-
 before_install:
   - pip install ansible
 
 script:
-  - ansible --version
+  - ansible-playbook -K tasks/main.yml
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

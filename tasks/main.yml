@@ -1,0 +1,3 @@
+---
+- include: package.yml
+  tags: package
