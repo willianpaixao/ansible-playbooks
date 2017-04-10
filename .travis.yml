@@ -1,0 +1,22 @@
+---
+services: docker
+
+env:
+  - distro: debian8
+    version: latest
+    init: /sbin/init
+
+before_install:
+  # Pull container
+  - 'docker pull rndmh3ro/docker-${distro}-ansible:${version}'
+
+script:
+  - container_id=$(mktemp)
+  # Run container in detached state.
+  - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/common:ro ${run_opts} rndmh3ro/docker-${distro}-ansible:${version} "${init}" > "${container_id}"'
+
+  # Test role.
+  - 'docker exec "$(cat ${container_id})" ansible-playbook -i"localhost," -K /etc/ansible/roles/common/tasks/main.yml
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
