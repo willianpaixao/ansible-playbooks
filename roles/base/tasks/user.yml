@@ -1,0 +1,38 @@
+---
+# file: roles/base/tasks/user.yml
+
+- name: Create sysadmin user account
+  user:
+    name: willian
+    comment: "Willian Paixao"
+    state: present
+    shell: /bin/bash
+    update_password: on_create
+  tags: user
+
+- name: Apend user to SUDO group
+  user:
+    name: willian
+    groups: sudo
+    append: yes
+  tags: user
+
+- name: Copy SSH public key
+  authorized_key:
+    user: willian
+    state: present
+    key: https://github.com/willianpaixao.keys
+  tags: user
+
+- name: Disable remote root login
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^PermitRootLogin yes$"
+    line: "PermitRootLogin no"
+  tags: user
+
+- name: Restart ssh
+  service:
+    name: ssh
+    state: restarted
+  tags: user

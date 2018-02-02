@@ -4,7 +4,7 @@ sudo: required
 language: python
 
 before_install:
-  - pip install --upgrade ansible
+  - pip install -r requirements.txt
 
 script:
   - ansible-playbook tasks/main.yml --syntax-check

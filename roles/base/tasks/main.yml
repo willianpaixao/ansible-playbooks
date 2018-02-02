@@ -1,0 +1,20 @@
+---
+# file: roles/base/tasks/main.yml
+
+- name: Update packages using apt
+  import_tasks: apt.yml
+  when: ansible_os_family == "Debian"
+  tags: apt
+
+- name: Update packages using yum
+  import_tasks: yum.yml
+  when: ansible_os_family == "RedHat"
+  tags: yum
+
+- name: Setup user and keys
+  import_tasks: user.yml
+  tags: user
+
+- name: Setup firewall rules
+  import_tasks: iptables.yml
+  tags: iptables

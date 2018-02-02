@@ -1,0 +1,11 @@
+---
+# file: roles/base/tasks/yum.yml
+
+- name: Upgrade all packages except the kernel
+  yum:
+    name: '*'
+    state: latest
+    exclude: kernel*
+  tags:
+    - yum
+    - skip_ansible_lint

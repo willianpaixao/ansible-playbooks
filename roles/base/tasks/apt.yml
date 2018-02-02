@@ -1,0 +1,23 @@
+---
+# file: roles/base/tasks/apt.yml
+
+- name: Install aptitude
+  apt:
+    name: aptitude
+    cache_valid_time: 86400
+  tags: apt
+
+- name: Upgrade packages
+  apt:
+    upgrade: yes
+  tags: apt
+
+- name: Remove unused packages
+  apt:
+    autoclean: yes
+  tags: apt
+
+- name: Remove unused packages
+  apt:
+    autoremove: yes
+  tags: apt

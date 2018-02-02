@@ -1,0 +1,30 @@
+---
+# file: roles/docker/tasks/main.yml
+
+- name: Add APT key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  tags: docker
+
+- name: Add APT repo
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+    filename: 'docker'
+    update_cache: yes
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
+  tags: docker
+
+- name: Install Docker
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - linux-image-extra-4.4.0-96-generic
+    - linux-image-extra-virtual
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+    - docker-ce
+  tags: docker
